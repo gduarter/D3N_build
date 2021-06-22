@@ -21,14 +21,22 @@ project space.
 ## Step-by-step
 
 * Run the script below to generate 57 directories with their respective subdirectories and input files.
-``` bash organize_systems.sh -i bickel_denovo_systems.sh
+
 ```
+bash organize_systems.sh -i bickel_denovo_systems.sh
+```
+
     * Make sure you read `organize_systems.sh` and change the scoring functions to whichever scoring functions you were assigned to calculate. 
     * Using Python >=3, run the script below:
-``` python3 create_slurm_scripts.py
+
 ```
+python3 create_slurm_scripts.py
+```
+
     * Make sure that you have `bickel_denovo_systems_40.dat` and `bickel_denovo_systems_17.dat` in the directory where the script is located. The script generates a plethora of slurm scripts that can be submitted using a simple for-loop:
-``` for elem in run*.sh; do echo ${elem}; sbatch ${elem}; done
+
+```
+for elem in run*.sh; do echo ${elem}; sbatch ${elem}; done
 ```
 
 ## More directions
