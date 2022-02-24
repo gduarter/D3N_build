@@ -1,8 +1,8 @@
 #!/bin/bash
 
 python='/gpfs/projects/rizzo/gduarteramos/zzz.programs_gduarteramos/miniconda3/envs/py37/bin/python'
-script1='/gpfs/projects/rizzo/gduarteramos/D3N_many_anchors/zzz.code_and_backup_inputs/calculate_statistics.py'
-script2='/gpfs/projects/rizzo/gduarteramos/D3N_many_anchors/zzz.code_and_backup_inputs/calculate_statistics_rejected.py'
+script1='/gpfs/projects/rizzo/gduarteramos/D3N_build/zzz.code_and_backup_inputs/calculate_statistics.py'
+script2='/gpfs/projects/rizzo/gduarteramos/D3N_build/zzz.code_and_backup_inputs/calculate_statistics_rejected.py'
 
 txtfile=$1
 
