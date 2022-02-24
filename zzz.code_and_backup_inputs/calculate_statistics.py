@@ -12,7 +12,7 @@ if len(sys.argv) != 2:
 
 # Important variables
 mol2file = sys.argv[1]
-observables = ["Stereocenters", "cLogP", "ESOL", "QED", "SA_Score"]#, "Layer_Completed"]
+observables = ["RD_Stereocenters", "RD_LogP", "RD_TPSA", "RD_QED", "RD_SYNTHA"]#, "Layer_Completed"]
 
 # Create txt files for analysis
 for elem in observables:
@@ -34,7 +34,7 @@ for elem in all_txt:
     # Fill dataframe
     df[observable] = tmpArr
     # Calculate statistics and print string to screen and file 
-    if observable != "Stereocenters":
+    if observable != "RD_Stereocenters":
         mean = tmpArr.mean()
         std = tmpArr.std()
         message = f''' {observable}          

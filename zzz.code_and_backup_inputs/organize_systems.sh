@@ -65,19 +65,20 @@ dn_save_all_mols                                             yes
 dn_drive_clogp                                               yes
 dn_lower_clogp                                               -20.0
 dn_upper_clogp                                               20.0
-dn_clogp_std_dev                                             2.33
-dn_drive_esol                                                yes
-dn_lower_esol                                                -20.0
-dn_upper_esol                                                20.0
-dn_esol_std_dev                                              2.15
+dn_clogp_std_dev                                             2.02
+dn_drive_esol                                                no
+dn_drive_tpsa                                                yes
+dn_lower_tpsa                                                0.0
+dn_upper_tpsa                                                999.0
+dn_tpsa_std_dev                                              42.0
 dn_drive_qed                                                 yes
 dn_lower_qed                                                 0.0
-dn_qed_std_dev                                               0.18
+dn_qed_std_dev                                               0.19
 dn_drive_sa                                                  yes
 dn_upper_sa                                                  10
-dn_sa_std_dev                                                1.01
+dn_sa_std_dev                                                0.89
 dn_drive_stereocenters                                       yes
-dn_upper_stereocenter                                        20
+dn_upper_stereocenter                                        100
 dn_start_at_layer                                            1
 sa_fraglib_path                                              ${parameters}/sa_fraglib.dat
 PAINS_path                                                   ${parameters}/pains_table.dat
@@ -205,17 +206,18 @@ dn_save_all_mols                                             yes
 dn_drive_clogp                                               yes
 dn_lower_clogp                                               1.0
 dn_upper_clogp                                               4.0
-dn_clogp_std_dev                                             2.33
-dn_drive_esol                                                yes
-dn_lower_esol                                                -3.5
-dn_upper_esol                                                0
-dn_esol_std_dev                                              2.15
+dn_clogp_std_dev                                             2.02
+dn_drive_esol                                                no
 dn_drive_qed                                                 yes
 dn_lower_qed                                                 0.6
-dn_qed_std_dev                                               0.18
+dn_qed_std_dev                                               0.19
+dn_drive_tpsa                                                yes
+dn_lower_tpsa                                                30.0
+dn_upper_tpsa                                                110.0
+dn_tpsa_std_dev                                              42.0
 dn_drive_sa                                                  yes
 dn_upper_sa                                                  3.0
-dn_sa_std_dev                                                1.01
+dn_sa_std_dev                                                0.89
 dn_drive_stereocenters                                       yes
 dn_upper_stereocenter                                        1
 dn_start_at_layer                                            1
@@ -323,7 +325,7 @@ EOF
 
         # Create D3N-no input files
         mkdir -p ${pdb}/denovo/anchor${N}
-        cat <<EOF > ${pdb}/denovo/anchor${N}/simple_build.${N}.in
+        cat <<EOF > ${pdb}/denovo/anchor${N}/dn.${N}.in
 conformer_search_type                                        denovo
 dn_fraglib_scaffold_file                                     ${parameters}/fraglib_scaffold.mol2
 dn_fraglib_linker_file                                       ${parameters}/fraglib_linker.mol2
@@ -425,6 +427,50 @@ flex_drive_file                                              ${parameters}/flex_
 chem_defn_file                                               ${parameters}/chem.defn
 EOF
 
+        cat <<EOF > ${pdb}/denovo/anchor${N}/utils.dn.${N}.in
+conformer_search_type                                        rigid
+use_internal_energy                                          yes
+internal_energy_rep_exp                                      12
+internal_energy_cutoff                                       100.0
+ligand_atom_file                                             ${pdb}.denovo.${N}.denovo_build.mol2
+limit_max_ligands                                            no
+skip_molecule                                                no
+read_mol_solvation                                           no
+calculate_rmsd                                               no
+use_database_filter                                          yes
+dbfilter_max_heavy_atoms                                     999
+dbfilter_min_heavy_atoms                                     0
+dbfilter_max_rot_bonds                                       999
+dbfilter_min_rot_bonds                                       0
+dbfilter_max_hb_donors                                       999
+dbfilter_min_hb_donors                                       0
+dbfilter_max_hb_acceptors                                    999
+dbfilter_min_hb_acceptors                                    0
+dbfilter_max_molwt                                           9999.0
+dbfilter_min_molwt                                           0.0
+dbfilter_max_formal_charge                                   20.0
+dbfilter_min_formal_charge                                   -20.0
+dbfilter_max_stereocenters                                   999
+dbfilter_min_stereocenters                                   0
+dbfilter_max_spiro_centers                                   999
+dbfilter_min_spiro_centers                                   0
+dbfilter_max_clogp                                           40.0
+dbfilter_min_clogp                                           -40.0
+filter_sa_fraglib_path                                       ${parameters}/sa_fraglib.dat
+filter_PAINS_path                                            ${parameters}/pains_table.dat
+orient_ligand                                                no
+bump_filter                                                  no
+score_molecules                                              no
+atom_model                                                   all
+vdw_defn_file                                                ${parameters}/vdw_AMBER_parm99.defn
+flex_defn_file                                               ${parameters}/flex.defn
+flex_drive_file                                              ${parameters}/flex_drive.tbl
+ligand_outfile_prefix                                        ${pdb}.denovo.${num}.descriptors
+write_orientations                                           no
+num_scored_conformers                                        1
+rank_ligands                                                 no
+EOF
+
         cat <<EOF > ${pdb}/denovo/anchor${N}/run.${pdb}.${N}.sh
 #!/bin/sh
 #SBATCH --partition=rn-long-40core
@@ -441,7 +487,9 @@ EOF
 echo "DOCK6 simulation started"
 date
 
-/gpfs/projects/rizzo/gduarteramos/zzz.programs_gduarteramos/dock6_beta_rdkit/bin/dock6 -i simple_build.${N}.in -o simple_build.${N}.out
+/gpfs/projects/rizzo/gduarteramos/zzz.programs_gduarteramos/dock6_beta_rdkit/bin/dock6 -i dn.${N}.in -o dn.${N}.out
+
+/gpfs/projects/rizzo/gduarteramos/zzz.programs_gduarteramos/dock6_beta_rdkit/bin/dock6 -i utils.dn.${N}.in -o utils.dn.${N}.out
 
 echo "DOCK6 simulation ended"
 date

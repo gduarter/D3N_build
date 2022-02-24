@@ -28,10 +28,10 @@ for num in anchors:
 #SBATCH --nodes=1
 #SBATCH --ntasks=40
 #SBATCH --job-name=ud3n.{elem[0]}.{num}
-#SBATCH --mail-type=begin
-#SBATCH --mail-type=end
-#SBATCH --mail-type=fail
-#SBATCH --mail-user=guilherme.duarteramosmatos@stonybrook.edu
+##SBATCH --mail-type=begin
+##SBATCH --mail-type=end
+##SBATCH --mail-type=fail
+##SBATCH --mail-user=guilherme.duarteramosmatos@stonybrook.edu
 #SBATCH --output=%x-%j.o
 
 # Functions
@@ -85,10 +85,10 @@ slurm_startjob
 #SBATCH --nodes=1
 #SBATCH --ntasks=40
 #SBATCH --job-name=d3n.{elem[0]}.{num}
-#SBATCH --mail-type=begin
-#SBATCH --mail-type=end
-#SBATCH --mail-type=fail
-#SBATCH --mail-user=guilherme.duarteramosmatos@stonybrook.edu
+##SBATCH --mail-type=begin
+##SBATCH --mail-type=end
+##SBATCH --mail-type=fail
+##SBATCH --mail-user=guilherme.duarteramosmatos@stonybrook.edu
 #SBATCH --output=%x-%j.o
 
 # Functions
@@ -142,10 +142,10 @@ slurm_startjob
 #SBATCH --nodes=1
 #SBATCH --ntasks=40
 #SBATCH --job-name=dn.{elem[0]}.{num}
-#SBATCH --mail-type=begin
-#SBATCH --mail-type=end
-#SBATCH --mail-type=fail
-#SBATCH --mail-user=guilherme.duarteramosmatos@stonybrook.edu
+##SBATCH --mail-type=begin
+##SBATCH --mail-type=end
+##SBATCH --mail-type=fail
+##SBATCH --mail-user=guilherme.duarteramosmatos@stonybrook.edu
 #SBATCH --output=%x-%j.o
 
 # Functions
