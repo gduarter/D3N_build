@@ -5,10 +5,11 @@ script1='/gpfs/projects/rizzo/gduarteramos/D3N_many_anchors/zzz.code_and_backup_
 script2='/gpfs/projects/rizzo/gduarteramos/D3N_many_anchors/zzz.code_and_backup_inputs/calculate_statistics_rejected.py'
 
 txtfile=$1
+anchors=(1 15 30 50 100 150 250 300 350 380)
 
 while IFS= read -r pdb
 do
-    for elem in (1 15 30 50 100 150 250 300 350 380)
+    for elem in "${anchors[@]}"
     do
         cd ${pdb}/restricted/anchor${N}
         $python $script1 ${pdb}.driven.${N}.denovo_build.mol2
