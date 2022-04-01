@@ -3,8 +3,8 @@ import os, shutil
 import glob
 import argparse
 
-script1 = '/gpfs/projects/rizzo/gduarteramos/D3N_build/zzz.code_and_backup_inputs/calculate_statistics.py'
-script2 = '/gpfs/projects/rizzo/gduarteramos/D3N_build/zzz.code_and_backup_inputs/calculate_statistics_rejected.py'
+script1 = '/gpfs/projects/rizzo/gduarteramos/D3N_simple_build/zzz.code_and_backup_inputs/calculate_statistics.py'
+script2 = '/gpfs/projects/rizzo/gduarteramos/D3N_simple_build/zzz.code_and_backup_inputs/calculate_statistics_rejected.py'
 
 
 #helpstring=f'''  This script calculates the statistical quantities, creates and move CSV files
