@@ -23,7 +23,7 @@ project space.
 * Run the script below to generate 57 directories with their respective subdirectories and input files.
 
 ```bash
-bash organize_systems.sh -i bickel_denovo_systems.sh
+bash organize_systems.sh -i bickel_denovo_systems.dat
 ```
 
 * Make sure you read `organize_systems.sh` and change the scoring functions to whichever scoring functions you were assigned to calculate. 
@@ -38,6 +38,13 @@ python3 create_slurm_scripts.py
 ```bash
 for elem in run*.sh; do echo ${elem}; sbatch ${elem}; done
 ```
+
+* When the simulations are done, make sure you run the following script to organize the analysis material:
+
+```bash
+bash analyze_results.sh bickel_denovo_systems.dat
+```
+
 
 ## More directions
 
