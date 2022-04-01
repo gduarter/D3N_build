@@ -465,7 +465,7 @@ atom_model                                                   all
 vdw_defn_file                                                ${parameters}/vdw_AMBER_parm99.defn
 flex_defn_file                                               ${parameters}/flex.defn
 flex_drive_file                                              ${parameters}/flex_drive.tbl
-ligand_outfile_prefix                                        ${pdb}.denovo.${num}.descriptors
+ligand_outfile_prefix                                        ${pdb}.denovo.${N}.descriptors
 write_orientations                                           no
 num_scored_conformers                                        1
 rank_ligands                                                 no
