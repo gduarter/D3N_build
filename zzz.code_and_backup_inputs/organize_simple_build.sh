@@ -119,7 +119,7 @@ simplex_grow_tors_premin_iterations                          1000
 simplex_random_seed                                          0
 simplex_restraint_min                                        no
 atom_model                                                   all
-vdw_defn_file                                                ${parameters}/vdw_AMBER_parm99.defn
+vdw_defn_file                                                ${parameters}/vdw_de_novo.defn
 flex_defn_file                                               ${parameters}/flex.defn
 flex_drive_file                                              ${parameters}/flex_drive.tbl                                                 
 EOF
@@ -236,7 +236,7 @@ simplex_grow_tors_premin_iterations                          1000
 simplex_random_seed                                          0
 simplex_restraint_min                                        no
 atom_model                                                   all
-vdw_defn_file                                                ${parameters}/vdw_AMBER_parm99.defn
+vdw_defn_file                                                ${parameters}/vdw_de_novo.defn
 flex_defn_file                                               ${parameters}/flex.defn
 flex_drive_file                                              ${parameters}/flex_drive.tbl 
 EOF
@@ -342,7 +342,7 @@ simplex_grow_tors_premin_iterations                          1000
 simplex_random_seed                                          0
 simplex_restraint_min                                        no
 atom_model                                                   all
-vdw_defn_file                                                ${parameters}/vdw_AMBER_parm99.defn
+vdw_defn_file                                                ${parameters}/vdw_de_novo.defn
 flex_defn_file                                               ${parameters}/flex.defn
 flex_drive_file                                              ${parameters}/flex_drive.tbl 
 EOF
