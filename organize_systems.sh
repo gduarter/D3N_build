@@ -35,7 +35,7 @@ parameters='/gpfs/projects/rizzo/gduarteramos/zzz.programs_gduarteramos/dock6_be
 #total_anchors=10
 #for ((N=1; N<=total_anchors; N++));
 
-anchor_num=(1 15 30 50 100 150 250 300 350 380)
+anchor_num=(1 2 3 4 5 6 7 8 9 10 100 250 300 350 380) #(1 15 30 50 100 150 250 300 350 380)
 for N in "${anchor_num[@]}"
 do
     while IFS= read -r pdb
@@ -165,10 +165,10 @@ EOF
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --job-name=ud3n.${pdb}
-#SBATCH --mail-type=begin
-#SBATCH --mail-type=end
-#SBATCH --mail-type=fail
-#SBATCH --mail-user=guilherme.duarteramosmatos@stonybrook.edu
+##SBATCH --mail-type=begin
+##SBATCH --mail-type=end
+##SBATCH --mail-type=fail
+##SBATCH --mail-user=guilherme.duarteramosmatos@stonybrook.edu
 #SBATCH --output=%x-%j.o
 
 echo "DOCK6 simulation started"
@@ -307,10 +307,10 @@ EOF
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --job-name=d3n.${pdb}
-#SBATCH --mail-type=begin
-#SBATCH --mail-type=end
-#SBATCH --mail-type=fail
-#SBATCH --mail-user=guilherme.duarteramosmatos@stonybrook.edu
+##SBATCH --mail-type=begin
+##SBATCH --mail-type=end
+##SBATCH --mail-type=fail
+##SBATCH --mail-user=guilherme.duarteramosmatos@stonybrook.edu
 #SBATCH --output=%x-%j.o
 
 echo "DOCK6 simulation started"
@@ -462,7 +462,7 @@ orient_ligand                                                no
 bump_filter                                                  no
 score_molecules                                              no
 atom_model                                                   all
-vdw_defn_file                                                ${parameters}/vdw_AMBER_parm99.defn
+vdw_defn_file                                                ${parameters}/vdw_de_novo.defn
 flex_defn_file                                               ${parameters}/flex.defn
 flex_drive_file                                              ${parameters}/flex_drive.tbl
 ligand_outfile_prefix                                        ${pdb}.denovo.${N}.descriptors
@@ -478,10 +478,10 @@ EOF
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --job-name=dn.${pdb}
-#SBATCH --mail-type=begin
-#SBATCH --mail-type=end
-#SBATCH --mail-type=fail
-#SBATCH --mail-user=guilherme.duarteramosmatos@stonybrook.edu
+##SBATCH --mail-type=begin
+##SBATCH --mail-type=end
+##SBATCH --mail-type=fail
+##SBATCH --mail-user=guilherme.duarteramosmatos@stonybrook.edu
 #SBATCH --output=%x-%j.o
 
 echo "DOCK6 simulation started"
