@@ -35,7 +35,7 @@ parameters='/gpfs/projects/rizzo/gduarteramos/zzz.programs_gduarteramos/dock6_be
 #total_anchors=10
 #for ((N=1; N<=total_anchors; N++));
 
-anchor_num=(1 15 30 50 100 150 250 300 350 380)
+anchor_num=(1 2 3 4 5 6 7 8 9 10 100 250 300 350 380) #(1 15 30 50 100 150 250 300 350 380)
 for N in "${anchor_num[@]}"
 do
     while IFS= read -r pdb
@@ -55,10 +55,10 @@ dn_name_identifier                                           random
 dn_sampling_method                                           rand
 dn_num_random_picks                                          20
 dn_pruning_conformer_score_cutoff                            100.0
-dn_pruning_conformer_score_scaling_factor                    1.0
+dn_pruning_conformer_score_scaling_factor                    2.0
 dn_pruning_clustering_cutoff                                 100.0
-dn_upper_constraint_mol_wt                                   750.0
-dn_lower_constraint_mol_wt                                   300.0
+dn_upper_constraint_mol_wt                                   550.0
+dn_lower_constraint_mol_wt                                   0.0
 dn_mol_wt_cutoff_type                                        soft
 dn_drive_verbose                                             yes
 dn_save_all_mols                                             yes
@@ -67,10 +67,7 @@ dn_lower_clogp                                               -20.0
 dn_upper_clogp                                               20.0
 dn_clogp_std_dev                                             2.02
 dn_drive_esol                                                no
-dn_drive_tpsa                                                yes
-dn_lower_tpsa                                                0.0
-dn_upper_tpsa                                                999.0
-dn_tpsa_std_dev                                              42.0
+dn_drive_tpsa                                                no
 dn_drive_qed                                                 yes
 dn_lower_qed                                                 0.0
 dn_qed_std_dev                                               0.19
@@ -149,11 +146,11 @@ simplex_rot_step                                             0.1
 simplex_tors_step                                            10.0
 simplex_anchor_max_iterations                                500
 simplex_grow_max_iterations                                  500
-simplex_grow_tors_premin_iterations                          1000
+simplex_grow_tors_premin_iterations                          0
 simplex_random_seed                                          0
 simplex_restraint_min                                        no
 atom_model                                                   all
-vdw_defn_file                                                ${parameters}/vdw_AMBER_parm99.defn
+vdw_defn_file                                                ${parameters}/vdw_de_novo.defn
 flex_defn_file                                               ${parameters}/flex.defn
 flex_drive_file                                              ${parameters}/flex_drive.tbl
 chem_defn_file                                               ${parameters}/chem.defn
@@ -165,10 +162,10 @@ EOF
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --job-name=ud3n.${pdb}
-#SBATCH --mail-type=begin
-#SBATCH --mail-type=end
-#SBATCH --mail-type=fail
-#SBATCH --mail-user=guilherme.duarteramosmatos@stonybrook.edu
+##SBATCH --mail-type=begin
+##SBATCH --mail-type=end
+##SBATCH --mail-type=fail
+##SBATCH --mail-user=guilherme.duarteramosmatos@stonybrook.edu
 #SBATCH --output=%x-%j.o
 
 echo "DOCK6 simulation started"
@@ -196,10 +193,10 @@ dn_name_identifier                                           random
 dn_sampling_method                                           rand
 dn_num_random_picks                                          20
 dn_pruning_conformer_score_cutoff                            100.0
-dn_pruning_conformer_score_scaling_factor                    1.0
+dn_pruning_conformer_score_scaling_factor                    2.0
 dn_pruning_clustering_cutoff                                 100.0
-dn_upper_constraint_mol_wt                                   750.0
-dn_lower_constraint_mol_wt                                   300.0
+dn_upper_constraint_mol_wt                                   550.0
+dn_lower_constraint_mol_wt                                   0.0
 dn_mol_wt_cutoff_type                                        soft
 dn_drive_verbose                                             yes
 dn_save_all_mols                                             yes
@@ -209,14 +206,11 @@ dn_upper_clogp                                               4.0
 dn_clogp_std_dev                                             2.02
 dn_drive_esol                                                no
 dn_drive_qed                                                 yes
-dn_lower_qed                                                 0.6
+dn_lower_qed                                                 0.61
 dn_qed_std_dev                                               0.19
-dn_drive_tpsa                                                yes
-dn_lower_tpsa                                                30.0
-dn_upper_tpsa                                                110.0
-dn_tpsa_std_dev                                              42.0
+dn_drive_tpsa                                                no
 dn_drive_sa                                                  yes
-dn_upper_sa                                                  3.0
+dn_upper_sa                                                  3.34
 dn_sa_std_dev                                                0.89
 dn_drive_stereocenters                                       yes
 dn_upper_stereocenter                                        1
@@ -290,11 +284,11 @@ simplex_rot_step                                             0.1
 simplex_tors_step                                            10.0
 simplex_anchor_max_iterations                                500
 simplex_grow_max_iterations                                  500
-simplex_grow_tors_premin_iterations                          1000
+simplex_grow_tors_premin_iterations                          0
 simplex_random_seed                                          0
 simplex_restraint_min                                        no
 atom_model                                                   all
-vdw_defn_file                                                ${parameters}/vdw_AMBER_parm99.defn
+vdw_defn_file                                                ${parameters}/vdw_de_novo.defn
 flex_defn_file                                               ${parameters}/flex.defn
 flex_drive_file                                              ${parameters}/flex_drive.tbl
 chem_defn_file                                               ${parameters}/chem.defn
@@ -307,10 +301,10 @@ EOF
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --job-name=d3n.${pdb}
-#SBATCH --mail-type=begin
-#SBATCH --mail-type=end
-#SBATCH --mail-type=fail
-#SBATCH --mail-user=guilherme.duarteramosmatos@stonybrook.edu
+##SBATCH --mail-type=begin
+##SBATCH --mail-type=end
+##SBATCH --mail-type=fail
+##SBATCH --mail-user=guilherme.duarteramosmatos@stonybrook.edu
 #SBATCH --output=%x-%j.o
 
 echo "DOCK6 simulation started"
@@ -338,10 +332,10 @@ dn_name_identifier                                           random
 dn_sampling_method                                           rand
 dn_num_random_picks                                          20
 dn_pruning_conformer_score_cutoff                            100.0
-dn_pruning_conformer_score_scaling_factor                    1.0
+dn_pruning_conformer_score_scaling_factor                    2.0
 dn_pruning_clustering_cutoff                                 100.0
-dn_upper_constraint_mol_wt                                   750.0
-dn_lower_constraint_mol_wt                                   300.0
+dn_upper_constraint_mol_wt                                   550.0
+dn_lower_constraint_mol_wt                                   0.0
 dn_mol_wt_cutoff_type                                        soft
 dn_drive_clogp                                               no
 dn_drive_esol                                                no
@@ -417,11 +411,11 @@ simplex_rot_step                                             0.1
 simplex_tors_step                                            10.0
 simplex_anchor_max_iterations                                500
 simplex_grow_max_iterations                                  500
-simplex_grow_tors_premin_iterations                          1000
+simplex_grow_tors_premin_iterations                          0
 simplex_random_seed                                          0
 simplex_restraint_min                                        no
 atom_model                                                   all
-vdw_defn_file                                                ${parameters}/vdw_AMBER_parm99.defn
+vdw_defn_file                                                ${parameters}/vdw_de_novo.defn
 flex_defn_file                                               ${parameters}/flex.defn
 flex_drive_file                                              ${parameters}/flex_drive.tbl
 chem_defn_file                                               ${parameters}/chem.defn
@@ -462,7 +456,7 @@ orient_ligand                                                no
 bump_filter                                                  no
 score_molecules                                              no
 atom_model                                                   all
-vdw_defn_file                                                ${parameters}/vdw_AMBER_parm99.defn
+vdw_defn_file                                                ${parameters}/vdw_de_novo.defn
 flex_defn_file                                               ${parameters}/flex.defn
 flex_drive_file                                              ${parameters}/flex_drive.tbl
 ligand_outfile_prefix                                        ${pdb}.denovo.${N}.descriptors
@@ -478,10 +472,10 @@ EOF
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --job-name=dn.${pdb}
-#SBATCH --mail-type=begin
-#SBATCH --mail-type=end
-#SBATCH --mail-type=fail
-#SBATCH --mail-user=guilherme.duarteramosmatos@stonybrook.edu
+##SBATCH --mail-type=begin
+##SBATCH --mail-type=end
+##SBATCH --mail-type=fail
+##SBATCH --mail-user=guilherme.duarteramosmatos@stonybrook.edu
 #SBATCH --output=%x-%j.o
 
 echo "DOCK6 simulation started"
