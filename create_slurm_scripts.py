@@ -17,7 +17,7 @@ if sys.version_info[:1] < (3,):
 
 order = ["40", "17"]
 bickel_dats = ["bickel_denovo_systems_40.dat", "bickel_denovo_systems_17.dat"]
-anchors=[1, 15, 30, 50, 100, 150, 250, 300, 350, 380]
+anchors=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 100, 250, 300, 350, 380]
 for num in anchors:
     for elem in zip(order, bickel_dats):
         with open(f"run_ud3n.{elem[0]}.{num}.sh", "w+") as f:
