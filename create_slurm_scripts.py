@@ -3,18 +3,6 @@ import os, sys
 if sys.version_info[:1] < (3,):
     sys.exit("This is a Python 3 script. Python 2.7 is deprecated and SHOULD NOT be used")
 
-#if len(sys.argv) != 2:
-#    print("Enter an integer number of anchors to be used.")
-#    sys.exit(f"USAGE: python {sys.argv[0]} number_of_anchors")
-#num_anchors = int(sys.argv[1])
-
-#order = ['a', 'b', 'c', 'd', 'e']
-#bickel_dats = ['bickel_denovo_systems_09.dat', 'bickel_denovo_systems_12_1.dat', 
-#               'bickel_denovo_systems_12_2.dat', 'bickel_denovo_systems_12_3.dat',
-#               'bickel_denovo_systems_12_4.dat' ]
-#order = ["seventeen", "nineteen", "twentyone"]
-#bickel_dats = ["bickel_denovo_systems_17.dat", "bickel_denovo_systems_19.dat", "bickel_denovo_systems_21.dat"]
-
 order = ["40", "17"]
 bickel_dats = ["bickel_denovo_systems_40.dat", "bickel_denovo_systems_17.dat"]
 anchors=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 100, 250, 300, 350, 380]
@@ -23,7 +11,7 @@ for num in anchors:
         with open(f"run_ud3n.{elem[0]}.{num}.sh", "w+") as f:
             script1=f'''#!/bin/sh
 #SBATCH --partition=rn-long-40core
-#SBATCH --exclude=rn017
+#SBATCH --exclude=rn[007-012]
 #SBATCH --time=100:00:00
 #SBATCH --nodes=1
 #SBATCH --ntasks=40
@@ -80,7 +68,7 @@ slurm_startjob
         with open(f"run_d3n.{elem[0]}.{num}.sh", "w+") as g:
             script2=f'''#!/bin/sh
 #SBATCH --partition=rn-long-40core
-#SBATCH --exclude=rn017
+#SBATCH --exclude=rn[007-012]
 #SBATCH --time=100:00:00
 #SBATCH --nodes=1
 #SBATCH --ntasks=40
@@ -137,7 +125,7 @@ slurm_startjob
         with open(f"run_dn.{elem[0]}.{num}.sh", "w+") as h:
             script3=f'''#!/bin/sh
 #SBATCH --partition=rn-long-40core
-#sbatch --exclude=rn017
+#SBATCH --exclude=rn[007-012]
 #SBATCH --time=100:00:00
 #SBATCH --nodes=1
 #SBATCH --ntasks=40
