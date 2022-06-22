@@ -4,7 +4,7 @@ python='/gpfs/projects/rizzo/gduarteramos/zzz.programs_gduarteramos/miniconda3/e
 
 root=$(pwd)
 script1=${root}/zzz.code_and_backup_inputs/calculate_statistics.py
-script2=${root}/calculate_statistics_rejected.py
+script2=${root}/zzz.code_and_backup_inputs/calculate_statistics_rejected.py
 resultsdir=${root}/zzz.results
 
 txtfile=$1

@@ -27,7 +27,7 @@ all_txt = glob.glob("*_grep.txt")
 # DataFrame that will store all data
 df = pd.DataFrame()
 # Calculate statistics
-tofile = f""
+#tofile = f""
 for elem in all_txt:
     observable = elem.split("_grep")[0]
     if observable in ["Failed_LogP", "Failed_TPSA", "Failed_QED", "Failed_SYNTHA", "Failed_stereo"]:

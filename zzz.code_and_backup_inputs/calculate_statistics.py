@@ -12,7 +12,7 @@ if len(sys.argv) != 2:
 
 # Important variables
 mol2file = sys.argv[1]
-observables = ["RD_Stereocenters", "RD_LogP", "RD_TPSA", "RD_QED", "RD_SYNTHA"]#, "Layer_Completed"]
+observables = ["RD_Stereocenters", "RD_LogP", "RD_TPSA", "RD_QED", "RD_SYNTHA", "Grid_Score"]#, "Layer_Completed"]
 
 # Create txt files for analysis
 for elem in observables:
@@ -26,43 +26,25 @@ all_txt = glob.glob("*_grep.txt")
 
 # DataFrame that will store all data
 df = pd.DataFrame()
-# Calculate statistics
-tofile = f""
 for elem in all_txt:
     tmpArr = np.genfromtxt(elem, dtype=float, usecols=2, comments="!")
     observable = elem.split("_grep")[0]
     # Fill dataframe
     df[observable] = tmpArr
-    # Calculate statistics and print string to screen and file 
-    if observable != "RD_Stereocenters":
-        mean = tmpArr.mean()
-        std = tmpArr.std()
-        message = f''' {observable}          
-     average  = {mean:.2f}
-     std dev  = {std:.2f}
- ======================
-        '''
-    else:
-        median = np.median(tmpArr)
-        mode = stats.mode(tmpArr)[0][0]
-        freq = 100 * stats.mode(tmpArr)[1][0] / float(len(tmpArr))
-        message = f''' {observable}
-    median    = {median}
-    mode      = {mode}
-    mode freq = {freq:.2f} %
-=======================
-        '''
-    #print(message)
-    #print(" ")
-    tofile = tofile + "\n" + message
 
 # Create txt file for names
 os.system(f"grep '     Name:' {mol2file} > Name_grep.txt")
 names = np.genfromtxt("Name_grep.txt", dtype=str, delimiter=":", usecols=1, comments="!")
 os.system("rm Name_grep.txt")
 
+# Create txt file for SMILES
+os.system(f"grep 'SMILES:' {mol2file} > SMILES_grep.txt")
+smi = np.genfromtxt("SMILES_grep.txt", dtype=str, delimiter=":", usecols=1, comments="!")
+os.system(f"rm SMILES_grep.txt")
+
 # Assign names to dataframe
 df["Name"] = names
+df["SMILES"] = smi
 
 # Create name for results file
 filename = mol2file.strip(".mol2")
