@@ -50,8 +50,8 @@ df["SMILES"] = smi
 filename = mol2file.strip(".mol2")
 
 # Save to file so you don't have to re-run this script many times 
-with open(f"statistics_{filename}.txt", "w+") as f:
-    f.write(tofile+"\n")
+#with open(f"statistics_{filename}.txt", "w+") as f:
+#    f.write(tofile+"\n")
 
 # Save data to csv
 df.to_csv(f"{filename}.csv", index=False)

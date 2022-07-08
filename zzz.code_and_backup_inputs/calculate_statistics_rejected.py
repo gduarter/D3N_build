@@ -12,7 +12,7 @@ if len(sys.argv) != 2:
 
 # Important variables
 mol2file = sys.argv[1]
-observables = ["Stereocenters", "cLogP", "TPSA", "QED", "SA_score", "Failed_LogP", "Failed_TPSA", "Failed_QED", "Failed_SYNTHA", "Failed_stereo"]#, "Layer_Completed"]
+observables = ["Stereocenters", "cLogP", "TPSA", "QED", "SA_score", "Failed_cLogP", "Failed_QED", "Failed_SA", "Failed_stereo"]#, "Layer_Completed"]
 
 # Create txt files for analysis
 for elem in observables:
@@ -30,7 +30,7 @@ df = pd.DataFrame()
 #tofile = f""
 for elem in all_txt:
     observable = elem.split("_grep")[0]
-    if observable in ["Failed_LogP", "Failed_TPSA", "Failed_QED", "Failed_SYNTHA", "Failed_stereo"]:
+    if observable in ["Failed_cLogP", "Failed_QED", "Failed_SA", "Failed_stereo"]:
         tmpArr = np.genfromtxt(elem, dtype=str, usecols=2, comments="!")
     else:
         tmpArr = np.genfromtxt(elem, dtype=float, usecols=2, comments="!")
