@@ -8,7 +8,7 @@ script2=${root}/zzz.code_and_backup_inputs/calculate_statistics_rejected.py
 resultsdir=${root}/zzz.results
 
 txtfile=$1
-anchors=(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 100, 250, 300, 350, 380)
+anchors=(1 2 3 4 5 6 7 8 9 10 100 250 300 350 380)
 
 mkdir -p ${resultsdir}/d3n-tight
 mkdir -p ${resultsdir}/d3n-loose
