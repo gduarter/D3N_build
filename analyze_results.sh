@@ -31,7 +31,7 @@ do
         cd ../../..
 
         cd ${pdb}/denovo/anchor${N}
-        $python $script1 ${pdb}.driven.${N}.descriptors.mol2
+        $python $script1 ${pdb}.denovo.${N}.descriptors_scored.mol2
         cp *.csv ${resultsdir}/dn/
         cd ../../..
 
