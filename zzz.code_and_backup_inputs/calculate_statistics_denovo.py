@@ -16,12 +16,22 @@ observables = ["Stereocenters", "cLogP", "TPSA", "QED", "SA_Score", "Grid_Score"
 
 os.system("rm *_grep.txt")
 
+altmol2 = mol2file.split('.descriptors.')[0] + ".denovo_build.mol2"
+
+
 # Create txt files for analysis
 for elem in observables:
-    try:
-        os.system(f"grep '     {elem}:' {mol2file} > {elem}_grep.txt") 
-    except:
-        print("Check MOL2 file")
+    if elem == "Grid_Score":
+        try:
+            os.system(f"grep '     {elem}:' {altmol2} > {elem}_grep.txt")
+        except:
+            print("Check MOL2 file")
+    else:
+        try:
+            os.system(f"grep '     {elem}:' {mol2file} > {elem}_grep.txt") 
+        except:
+            print("Check MOL2 file")
+
 
 # text files containing the data
 all_txt = glob.glob("*_grep.txt")

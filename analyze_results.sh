@@ -5,6 +5,7 @@ python='/gpfs/projects/rizzo/gduarteramos/zzz.programs_gduarteramos/miniconda3/e
 root=$(pwd)
 script1=${root}/zzz.code_and_backup_inputs/calculate_statistics.py
 script2=${root}/zzz.code_and_backup_inputs/calculate_statistics_rejected.py
+script3=${root}/zzz.code_and_backup_inputs/calculate_statistics_denovo.py
 resultsdir=${root}/zzz.results
 
 txtfile=$1
@@ -19,19 +20,27 @@ do
     for N in "${anchors[@]}"
     do
         cd ${pdb}/restricted/anchor${N}
+        echo "$(pwd)"
         $python $script1 ${pdb}.driven.${N}.denovo_build.mol2
+        echo "$(pwd)/${pdb}.driven.${N}.denovo_build.mol2"
         $python $script2 ${pdb}.driven.${N}.denovo_rejected.mol2
+        echo "$(pwd)/${pdb}.driven.${N}.denovo_rejected.mol2"
         cp *.csv ${resultsdir}/d3n-tight/
         cd ../../..
 
         cd ${pdb}/unrestricted/anchor${N}
+        echo "$(pwd)"
         $python $script1 ${pdb}.unrestricted.${N}.denovo_build.mol2
-        $python $script2 ${pdb}.unrestricted.${N}.denovo_rejected.mol2
+        echo "$(pwd)/${pdb}.unrestricted.${N}.denovo_build.mol2"
+        #$python $script2 ${pdb}.unrestricted.${N}.denovo_rejected.mol2
+        #echo "$(pwd)/${pdb}.unrestricted.${N}.denovo_rejected.mol2"
         cp *.csv ${resultsdir}/d3n-loose/
         cd ../../..
 
         cd ${pdb}/denovo/anchor${N}
-        $python $script1 ${pdb}.denovo.${N}.descriptors_scored.mol2
+        echo "$(pwd)"
+        $python $script3 ${pdb}.denovo.${N}.descriptors_scored.mol2
+        echo "$(pwd)/${pdb}.denovo.${N}.descriptors_scored.mol2"
         cp *.csv ${resultsdir}/dn/
         cd ../../..
 
