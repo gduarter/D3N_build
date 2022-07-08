@@ -11,7 +11,7 @@ for num in anchors:
         with open(f"run_ud3n.{elem[0]}.{num}.sh", "w+") as f:
             script1=f'''#!/bin/sh
 #SBATCH --partition=rn-long-40core
-#SBATCH --exclude=rn[004-012]
+#SBATCH --exclude=rn[007-012]
 #SBATCH --time=100:00:00
 #SBATCH --nodes=1
 #SBATCH --ntasks=40
@@ -68,7 +68,7 @@ slurm_startjob
         with open(f"run_d3n.{elem[0]}.{num}.sh", "w+") as g:
             script2=f'''#!/bin/sh
 #SBATCH --partition=rn-long-40core
-#SBATCH --exclude=rn[004-012]
+#SBATCH --exclude=rn[007-012]
 #SBATCH --time=100:00:00
 #SBATCH --nodes=1
 #SBATCH --ntasks=40
@@ -125,7 +125,7 @@ slurm_startjob
         with open(f"run_dn.{elem[0]}.{num}.sh", "w+") as h:
             script3=f'''#!/bin/sh
 #SBATCH --partition=rn-long-40core
-#SBATCH --exclude=rn[004-012]
+#SBATCH --exclude=rn[007-012]
 #SBATCH --time=100:00:00
 #SBATCH --nodes=1
 #SBATCH --ntasks=40
