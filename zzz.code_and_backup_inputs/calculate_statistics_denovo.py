@@ -16,7 +16,7 @@ observables = ["Stereocenters", "cLogP", "TPSA", "QED", "SA_Score", "Grid_Score"
 
 os.system("rm *_grep.txt")
 
-altmol2 = mol2file.split('.descriptors.')[0] + ".denovo_build.mol2"
+altmol2 = mol2file.split('.descriptors_scored')[0] + ".denovo_build.mol2"
 
 
 # Create txt files for analysis

@@ -12,7 +12,7 @@ if len(sys.argv) != 2:
 
 # Important variables
 mol2file = sys.argv[1]
-observables = ["Stereocenters", "cLogP", "TPSA", "QED", "SA_score", "Failed_cLogP", "Failed_QED", "Failed_SA", "Failed_stereo"]#, "Layer_Completed"]
+observables = ["Stereocenters", "cLogP", "TPSA", "QED", "SA_Score", "Failed_clogp", "Failed_QED", "Failed_SA", "Failed_stereo"]#, "Layer_Completed"]
 
 # Create txt files for analysis
 for elem in observables:

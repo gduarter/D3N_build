@@ -460,7 +460,7 @@ dbfilter_min_spiro_centers                                   0
 dbfilter_max_clogp                                           40.0
 dbfilter_min_clogp                                           -40.0
 filter_sa_fraglib_path                                       ${parameters}/sa_fraglib.dat
-filter_PAINS_path                                            ${parameters}/pains_table.dat
+filter_PAINS_path                                            ${parameters}/pains_table_2019_09_01.dat
 orient_ligand                                                no
 bump_filter                                                  no
 score_molecules                                              no
