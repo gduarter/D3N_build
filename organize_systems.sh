@@ -175,7 +175,7 @@ EOF
 echo "DOCK6 simulation started"
 date
 
-/gpfs/projects/rizzo/gduarteramos/zzz.programs_gduarteramos/dock6_beta_rdkit/bin/dock6 -i ud3n.${N}.in -o ud3n.${N}.out
+/gpfs/projects/rizzo/gduarteramos/zzz.programs_gduarteramos/dock6_alpha/bin/dock6 -i ud3n.${N}.in -o ud3n.${N}.out
 
 echo "DOCK6 simulation ended"
 date
@@ -318,7 +318,7 @@ EOF
 echo "DOCK6 simulation started"
 date
 
-/gpfs/projects/rizzo/gduarteramos/zzz.programs_gduarteramos/dock6_beta_rdkit/bin/dock6 -i d3n.${N}.in -o d3n.${N}.out
+/gpfs/projects/rizzo/gduarteramos/zzz.programs_gduarteramos/dock6_alpha/bin/dock6 -i d3n.${N}.in -o d3n.${N}.out
 
 echo "DOCK6 simulation ended"
 date
@@ -490,9 +490,9 @@ EOF
 echo "DOCK6 simulation started"
 date
 
-/gpfs/projects/rizzo/gduarteramos/zzz.programs_gduarteramos/dock6_beta_rdkit/bin/dock6 -i dn.${N}.in -o dn.${N}.out
+/gpfs/projects/rizzo/gduarteramos/zzz.programs_gduarteramos/dock6_alpha/bin/dock6 -i dn.${N}.in -o dn.${N}.out
 
-/gpfs/projects/rizzo/gduarteramos/zzz.programs_gduarteramos/dock6_beta_rdkit/bin/dock6 -i utils.dn.${N}.in -o utils.dn.${N}.out
+/gpfs/projects/rizzo/gduarteramos/zzz.programs_gduarteramos/dock6_alpha/bin/dock6 -i utils.dn.${N}.in -o utils.dn.${N}.out
 
 echo "DOCK6 simulation ended"
 date
