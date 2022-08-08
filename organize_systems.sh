@@ -29,7 +29,7 @@ fi
 
 ## Define important paths
 datapath='/gpfs/projects/rizzo/yuchzhou/RCR/DOCK_testset/'
-parameters='/gpfs/projects/rizzo/gduarteramos/zzz.programs_gduarteramos/dock6_beta_rdkit/parameters'
+parameters='/gpfs/projects/rizzo/gduarteramos/zzz.programs_gduarteramos/dock6_alpha/parameters'
 
 # Loop over lines in TXTFILE and create files and directories
 #total_anchors=10
@@ -447,8 +447,15 @@ dbfilter_max_spiro_centers                                   999
 dbfilter_min_spiro_centers                                   0
 dbfilter_max_clogp                                           40.0
 dbfilter_min_clogp                                           -40.0
-filter_sa_fraglib_path                                       ${parameters}/sa_fraglib.dat
-filter_PAINS_path                                            ${parameters}/pains_table_2019_09_01.dat
+dbfilter_max_logs                                            40.0
+dbfilter_min_logs                                            -40.0
+dbfilter_max_qed                                             1.0
+dbfilter_min_qed                                             0.0
+dbfilter_max_sa                                              10.0
+dbfilter_min_sa                                              1.0
+dbfilter_max_pns                                             100
+dbfilter_sa_fraglib_path                                     ${parameters}/sa_fraglib.dat
+dbfilter_PAINS_path                                          ${parameters}/pains_table_2019_09_01.dat
 orient_ligand                                                no
 bump_filter                                                  no
 score_molecules                                              no
