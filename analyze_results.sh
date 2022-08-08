@@ -32,8 +32,8 @@ do
         echo "$(pwd)"
         $python $script1 ${pdb}.unrestricted.${N}.denovo_build.mol2
         echo "$(pwd)/${pdb}.unrestricted.${N}.denovo_build.mol2"
-        #$python $script2 ${pdb}.unrestricted.${N}.denovo_rejected.mol2
-        #echo "$(pwd)/${pdb}.unrestricted.${N}.denovo_rejected.mol2"
+        $python $script2 ${pdb}.unrestricted.${N}.denovo_rejected.mol2
+        echo "$(pwd)/${pdb}.unrestricted.${N}.denovo_rejected.mol2"
         cp *.csv ${resultsdir}/d3n-loose/
         cd ../../..
 
