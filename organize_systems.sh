@@ -31,10 +31,6 @@ fi
 datapath='/gpfs/projects/rizzo/yuchzhou/RCR/DOCK_testset/'
 parameters='/gpfs/projects/rizzo/gduarteramos/zzz.programs_gduarteramos/dock6_alpha/parameters'
 
-# Loop over lines in TXTFILE and create files and directories
-#total_anchors=10
-#for ((N=1; N<=total_anchors; N++));
-
 anchor_num=(1 2 3 4 5 6 7 8 9 10 100 250 300 350 380) #(1 15 30 50 100 150 250 300 350 380)
 for N in "${anchor_num[@]}"
 do
