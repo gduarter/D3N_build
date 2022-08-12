@@ -12,7 +12,7 @@ if len(sys.argv) != 2:
 
 # Important variables
 mol2file = sys.argv[1]
-observables = ["Stereocenters", "cLogP", "TPSA", "QED", "SA_Score", "Grid_Score"]#, "Layer_Completed"]
+observables = ["RD_Stereocenters", "RD_LogP", "RD_TPSA", "RD_QED", "RD_SYNTHA", "Grid_Score"]#, "Layer_Completed"]
 
 os.system("rm *_grep.txt")
 
@@ -50,7 +50,7 @@ names = np.genfromtxt("Name_grep.txt", dtype=str, delimiter=":", usecols=1, comm
 os.system("rm Name_grep.txt")
 
 # Create txt file for SMILES
-os.system(f"grep 'SMILES:' {mol2file} > SMILES_grep.txt")
+os.system(f"grep 'RD_SMILES:' {mol2file} > SMILES_grep.txt")
 smi = np.genfromtxt("SMILES_grep.txt", dtype=str, delimiter=":", usecols=1, comments="!")
 os.system(f"rm SMILES_grep.txt")
 
